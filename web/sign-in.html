@@ -1,0 +1,21 @@
+<div class="navbar-inner navbar-nav navbar-right nav" ng-controller="SignInController as signIn">
+
+    <ul class="nav navbar-nav" ng-show="signIn.userService.isLogged()">
+        <li>
+            <a href="" ng-click="page.setCurrent('activities')">{{signIn.userService.username}}</a>
+        </li>
+    </ul>
+
+    <form class="form-inline navbar-form" role="form" ng-hide="signIn.userService.isLogged()">
+        <div class="form-group">
+            <label class="sr-only" for="UsernameInput">Username</label>
+            <input ng-model="signIn.user.username" type="text" class="form-control" id="UsernameInput" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="PasswordInput">Password</label>
+            <input ng-model="signIn.user.password" type="password" class="form-control" id="PasswordInput" placeholder="Enter password">
+        </div>
+        <button ng-click="signIn.loginUser(page)" type="submit" class="btn btn-default">Sign in</button>
+        <button ng-click="page.setCurrent('sign-up')" class="btn btn-default">Sign up</button>
+    </form>
+</div>

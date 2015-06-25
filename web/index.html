@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Toptal Test App</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/site.css" rel="stylesheet">
+    <script src="/js/angular.js"></script>
+    <script src="/js/angular-resource.min.js"></script>
+    <script src="/js/app.js"></script>
+<body ng-app="TopTalApp">
+
+<div class="wrap" ng-controller="PageController as page">
+    <nav id="w0" class="navbar-inverse navbar-fixed-top navbar" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+           <a ng-click="page.setCurrent('intro')" class="navbar-brand" href="">Toptal Test App</a>
+        </div>
+        <sign-in></sign-in>
+    </div>
+    </nav>
+    <div class="container">
+        <intro-text ng-show="page.isCurrent('intro')"></intro-text>
+        <sign-up ng-show="page.isCurrent('sign-up')"></sign-up>
+        <activities ng-show="page.isCurrent('activities')"></activities>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+
+    </div>
+</footer>
+
+</body>
+</html>

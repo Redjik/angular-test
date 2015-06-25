@@ -1,0 +1,71 @@
+<div ng-controller="ActivityController as actCtrl">
+
+    <h1>Activities</h1>
+
+    <div class="activities-form">
+        <form method="post">
+            <div class="form-group required">
+                <label class="control-label" for="note">Note</label>
+                <textarea ng-model="actCtrl.activity.note" id="note" class="form-control" name="note" rows="3"></textarea>
+            </div>
+            <div class="form-group form-inline">
+                <div class="form-group required">
+                    <label class="control-label" for="duration">Duration</label>
+                    <input ng-model="actCtrl.activity.duration" type="number" id="duration" class="form-control" name="duration">
+                </div>
+                <div class="form-group required">
+                    <label class="control-label" for="date">Date</label>
+                    <input ng-model="actCtrl.activity.date" type="date" id="date" class="form-control" name="date">
+                </div>
+            </div>
+            <div  class="form-group">
+                <button ng-click="actCtrl.addActivity()" type="submit" class="btn btn-success" ng-disabled="actCtrl.activity.id > 0">Add</button>
+                <button ng-click="actCtrl.editActivity()" type="submit" class="btn btn-success" ng-disabled="!(actCtrl.activity.id > 0)" >Save</button>
+                <button ng-click="actCtrl.clearActivity()" type="submit" class="btn btn-success">Clear</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="filter-form">
+        <h2>Filter</h2>
+        <form method="post">
+            <div class="form-group form-inline">
+                <div class="form-group ">
+                    <label class="control-label" for="preferred">Preferred Working Hours</label>
+                    <input ng-model="actCtrl.filters.workingHours" ng-change="actCtrl.filterChanged()" type="number" id="preferred" class="form-control" name="preferred">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="duration_from">Date:from</label>
+                    <input ng-model="actCtrl.filters.from" ng-change="actCtrl.filterChanged()" type="date" id="duration_from" class="form-control" name="duration_from">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="duration_to">Date:to</label>
+                    <input ng-model="actCtrl.filters.to" ng-change="actCtrl.filterChanged()"  type="date" id="duration_to" class="form-control" name="duration_to">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="grid-view">
+        <table class="table table-striped table-bordered"><thead>
+        <tr>
+            <th>Note</th>
+            <th>Date</th>
+            <th>Duration</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+            <tbody>
+            <tr data-key="2" ng-repeat="activity in actCtrl.actS.activities"  ng-class="{'alert-danger':activity.underhour,'alert-success':(activity.underhour===false)}">
+                <td>{{activity.note}}</td>
+                <td>{{activity.date|date:'dd.MM.yyyy'}}</td>
+                <td>{{activity.duration}}</td>
+                <td>
+                    <a href="" ng-click="actCtrl.initEdit(activity)" title="edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="" ng-click="actCtrl.deleteActivity(activity)" title="delete"><span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

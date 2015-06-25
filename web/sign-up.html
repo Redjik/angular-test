@@ -1,0 +1,25 @@
+<div class="site-login">
+    <h1>Register</h1>
+
+    <p>Please fill out the following fields to sign up:</p>
+
+    <div class="row">
+        <div class="col-lg-5">
+            <form id="login-form" method="post" ng-controller="SignUpController as signUp" ng-submit="signUp.addUser(page)">
+                <div class="form-group required">
+                    <label class="control-label" for="username">Username</label>
+                    <input ng-model="signUp.user.username" type="text" id="username" class="form-control" name="username">
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group required">
+                    <label class="control-label" for="password">Password</label>
+                    <input ng-model="signUp.user.password" type="password" id="password" class="form-control" name="password">
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" name="login-button">Sign up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
